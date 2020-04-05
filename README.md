@@ -1,2 +1,2 @@
-# BetterNote
+# betterNote.BetterNote
  Makes the Note event better.

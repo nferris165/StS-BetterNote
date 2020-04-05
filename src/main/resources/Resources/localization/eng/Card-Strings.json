@@ -1,0 +1,6 @@
+{
+  "upgradedEnemies:BasicAttack": {
+    "NAME": "Basic Attack",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !B! Block. NL You are feeling [#666646]groggy...[]"
+  }
+}

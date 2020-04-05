@@ -1,0 +1,24 @@
+{
+  "upgradedEnemies:SlumberingCharacter": {
+    "NAMES": [
+      "The Slumbering",
+      "the Slumbering"
+    ],
+    "TEXT": [
+      "Suddenly awoken from a deep slumber after a long time. NL Gains power from it's dreams, but must find the energy to act.",
+      "NL You don't remember this being... And you HATE it!",
+      "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"We have been waiting for your return.\"~"
+    ]
+  },
+  "upgradedEnemies:NeowPatch": {
+    "NAMES": [
+      ""
+    ],
+    "TEXT": [
+      "[ #gWake #gup #ga #glittle... ]",
+      " #gWake #gup #ga #glot... ]",
+      "[ #gObtain #ga #grandom #gBasic #gCard ]",
+      "[ #gFor #gone #gAct #ggain [E] #gin #gdifficult #gcombats ]"
+    ]
+  }
+}

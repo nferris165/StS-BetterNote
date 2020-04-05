@@ -1,0 +1,43 @@
+{
+  "upgradedEnemies:Patches": {
+    "NAME": "Patches",
+    "DESCRIPTIONS": ["Retain up to #b",
+      " Block at the start of your turn."]
+  },
+  "upgradedEnemies:EmpoweredPower": {
+    "NAME": "Empowered",
+    "DESCRIPTIONS": ["This enemy is Empowered."]
+  },
+  "upgradedEnemies:BulkyPower": {
+    "NAME": "Bulky",
+    "DESCRIPTIONS": ["This enemy has increased health."]
+  },
+  "upgradedEnemies:ToughPower": {
+    "NAME": "Tough",
+    "DESCRIPTIONS": ["This enemy starts each turn with #b",
+      " additional Block."]
+  },
+  "upgradedEnemies:CardCounterPower": {
+    "NAME": "Counting",
+    "DESCRIPTIONS": ["Defeat all enemies before drawing #b",
+      " cards to gain a reward!"]
+  },
+  "upgradedEnemies:PreparedPower": {
+    "NAME": "Prepared",
+    "DESCRIPTIONS": ["This enemy starts combat with #b",
+      " additional Block."
+    ]
+  },
+  "upgradedEnemies:DontHitPower": {
+    "NAME": "Friendly",
+    "DESCRIPTIONS": ["Avoid attacking this enemy for #b",
+      " turns to receive a reward."
+    ]
+  },
+  "upgradedEnemies:ThiefPower": {
+    "NAME": "Thief",
+    "DESCRIPTIONS": ["This enemy has stolen ",
+      " from you. Defeat them to regain it."
+    ]
+  }
+}
