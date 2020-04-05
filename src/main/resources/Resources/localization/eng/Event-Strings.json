@@ -5,7 +5,8 @@
       "You spot a loose brick within a pillar that catches your eye.",
       "You find a folded note and a #ycard inside. It reads, NL \"The Heart awaits.\" NL NL This is your handwriting.",
       "Choose a Card to Store a copy.",
-      "What is going on?"
+      "What is going on?",
+      "You find secret compartment, but it's empty! NL You think you could fit a #ycard inside."
     ],
     "OPTIONS": [
       "[Continue]",
@@ -15,8 +16,10 @@
       "[Leave]",
       "[Take] #gReceive ",
       " #band #bLeave #bnothing #bbehind.",
-      "[Give] #gStore #ga #gcopy #gof #ga #gCard, #rbut #rDestroy ",
-      "."
+      "[Give] #gStore #ga #gcopy #gof #ga #gCard",
+      ", #rbut #rDestroy ",
+      ".",
+      "[Locked] Requires: Stored Card."
     ]
   }
 }

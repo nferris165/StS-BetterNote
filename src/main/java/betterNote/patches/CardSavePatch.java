@@ -30,10 +30,16 @@ public class CardSavePatch {
         public static void Insert(AbstractDungeon __instance, SaveFile saveFile) {
             if (AbstractDungeon.getCurrRoom() instanceof EventRoom && AbstractDungeon.getCurrRoom().event instanceof BetterNoteEvent) {
                 AbstractCard tmpCard = ((BetterNoteEvent)AbstractDungeon.getCurrRoom().event).saveCard;
+
                 if (tmpCard != null) {
-                    CardCrawlGame.playerPref.putString("NOTE_CARD", tmpCard.cardID);
-                    CardCrawlGame.playerPref.putInteger("NOTE_UPGRADE", tmpCard.timesUpgraded);
-                    CardCrawlGame.playerPref.putInteger("NOTE_MISC", tmpCard.misc);
+                    if(((BetterNoteEvent)AbstractDungeon.getCurrRoom().event).remCard){
+                        CardCrawlGame.playerPref.putString("NOTE_CARD", "None");
+                    }
+                    else {
+                        CardCrawlGame.playerPref.putString("NOTE_CARD", tmpCard.cardID);
+                        CardCrawlGame.playerPref.putInteger("NOTE_UPGRADE", tmpCard.timesUpgraded);
+                        CardCrawlGame.playerPref.putInteger("NOTE_MISC", tmpCard.misc);
+                    }
                     CardCrawlGame.playerPref.flush();
                 }
             }

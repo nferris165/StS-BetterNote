@@ -43,11 +43,18 @@ public class BetterNoteEvent extends AbstractImageEvent {
     protected void buttonEffect(int buttonPressed) {
         switch(this.screen) {
             case INTRO:
-                this.imageEventText.updateBodyText(DESCRIPTIONS[1]);
                 this.screen = BetterNoteEvent.CUR_SCREEN.CHOOSE;
-                this.imageEventText.updateDialogOption(0, OPTIONS[5] + this.obtainCard.name + OPTIONS[6], this.obtainCard);
-                this.imageEventText.updateDialogOption(1, OPTIONS[1] + this.obtainCard.name + OPTIONS[2], this.obtainCard);
-                this.imageEventText.updateDialogOption(2, OPTIONS[7] + this.obtainCard.name + OPTIONS[8], this.obtainCard);
+                if(this.obtainCard != null) {
+                    this.imageEventText.updateBodyText(DESCRIPTIONS[1]);
+                    this.imageEventText.updateDialogOption(0, OPTIONS[5] + this.obtainCard.name + OPTIONS[6], this.obtainCard);
+                    this.imageEventText.updateDialogOption(1, OPTIONS[1] + this.obtainCard.name + OPTIONS[2], this.obtainCard);
+                    this.imageEventText.updateDialogOption(2, OPTIONS[7] + OPTIONS[8] + this.obtainCard.name + OPTIONS[9], this.obtainCard);
+                } else {
+                    this.imageEventText.updateBodyText(DESCRIPTIONS[4]);
+                    this.imageEventText.updateDialogOption(0, OPTIONS[10], true);
+                    this.imageEventText.updateDialogOption(1, OPTIONS[10], true);
+                    this.imageEventText.updateDialogOption(2, OPTIONS[7] + OPTIONS[9]);
+                }
                 this.imageEventText.setDialogOption(OPTIONS[3]);
                 break;
             case CHOOSE:
@@ -64,6 +71,7 @@ public class BetterNoteEvent extends AbstractImageEvent {
                         for(AbstractRelic r: AbstractDungeon.player.relics){
                             r.onMasterDeckChange();
                         }
+                        this.saveCard = new IronWave();
                         this.remCard = true;
                         break;
                     case 1:
@@ -111,18 +119,12 @@ public class BetterNoteEvent extends AbstractImageEvent {
             this.saveCard = storeCard.makeStatEquivalentCopy();
             this.cardSelect = false;
         }
-
-        if(remCard){
-            this.saveCard = new IronWave();
-            this.remCard = false;
-        }
-
     }
 
     private void initializeObtainCard() {
-        this.obtainCard = CardLibrary.getCard(CardCrawlGame.playerPref.getString("NOTE_CARD", "Iron Wave"));
+        this.obtainCard = CardLibrary.getCard(CardCrawlGame.playerPref.getString("NOTE_CARD", "None"));
         if (this.obtainCard == null) {
-            this.obtainCard = new IronWave();
+            return;
         }
 
         this.obtainCard = this.obtainCard.makeCopy();
