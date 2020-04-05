@@ -1,6 +1,5 @@
 package betterNote.patches;
 
-import betterNote.BetterNote;
 import betterNote.events.BetterNoteEvent;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
@@ -30,7 +29,6 @@ public class CardSavePatch {
         )
         public static void Insert(AbstractDungeon __instance, SaveFile saveFile) {
             if (AbstractDungeon.getCurrRoom() instanceof EventRoom && AbstractDungeon.getCurrRoom().event instanceof BetterNoteEvent) {
-                BetterNote.logger.info("got here\n\n");
                 AbstractCard tmpCard = ((BetterNoteEvent)AbstractDungeon.getCurrRoom().event).saveCard;
                 if (tmpCard != null) {
                     CardCrawlGame.playerPref.putString("NOTE_CARD", tmpCard.cardID);

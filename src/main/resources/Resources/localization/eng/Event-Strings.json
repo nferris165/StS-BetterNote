@@ -4,15 +4,19 @@
     "DESCRIPTIONS": [
       "You spot a loose brick within a pillar that catches your eye.",
       "You find a folded note and a #ycard inside. It reads, NL \"The Heart awaits.\" NL NL This is your handwriting.",
-      "Choose a Card to Store.",
+      "Choose a Card to Store a copy.",
       "What is going on?"
     ],
     "OPTIONS": [
       "[Continue]",
       "[Take and Give] #gReceive ",
-      " #gand #gStore #ga #gCard.",
+      " #gand #gStore #ga #gcopy #gof #ga #gCard.",
       "[Ignore]",
-      "[Leave]"
+      "[Leave]",
+      "[Take] #gReceive ",
+      " #band #bLeave #bnothing #bbehind.",
+      "[Give] #gStore #ga #gcopy #gof #ga #gCard, #rbut #rDestroy ",
+      "."
     ]
   }
 }

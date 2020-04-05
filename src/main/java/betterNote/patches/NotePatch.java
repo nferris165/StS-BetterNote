@@ -22,12 +22,11 @@ public class NotePatch {
     public static class NotePatchGenerate {
         public static SpireReturn<AbstractEvent> Prefix (Random __rng){
 
-        if (AbstractDungeon.actNum == 1) {
+        if (AbstractDungeon.actNum == 2) {
             return SpireReturn.Return(AbstractDungeon.getShrine(__rng));
         }
 
         return SpireReturn.Continue();
-
         }
     }
 
@@ -42,20 +41,14 @@ public class NotePatch {
         )
         public static SpireReturn<AbstractEvent> Insert(Random __rng, @ByRef String[] ___tmpKey, ArrayList<String> ___specialOneTimeEventList) {
             BetterNote.logger.info("Forcing Note Event over " + ___tmpKey[0]);
-            //BetterNote.logger.info(___specialOneTimeEventList + " got list\n\n");
 
             if(___specialOneTimeEventList.contains(NoteForYourself.ID)){
-                //BetterNote.logger.info("got note\n\n");
-
-                if(AbstractDungeon.actNum == 1){
+                if(AbstractDungeon.actNum == 2){
                     ___tmpKey[0] = NoteForYourself.ID;
                 }
             }
 
-            //BetterNote.logger.info(___tmpKey[0] + " got here\n\n");
-
             return SpireReturn.Continue();
-
         }
     }
 
