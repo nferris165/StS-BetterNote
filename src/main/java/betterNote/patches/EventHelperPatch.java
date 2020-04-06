@@ -16,6 +16,11 @@ public class EventHelperPatch {
         public static AbstractEvent Postfix(AbstractEvent __result, String key){
 
             if (__result instanceof NoteForYourself) {
+                /*
+                if(AbstractDungeon.actNum == 1){
+                    return AbstractDungeon.getEvent(AbstractDungeon.eventRng);
+                }
+                */
                 return new BetterNoteEvent();
             }
             return __result;
