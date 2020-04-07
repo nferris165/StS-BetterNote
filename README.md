@@ -2,7 +2,7 @@
 
 This mod is meant to redesign the Event "A Note for Yourself" into something more useful and fun for the player.
 
-# Effects
+## Effects
 
 The Event "A Note for Yourself" has new options allowing the player to store a copy of a card instead of losing a card. The player can also take the stored card without offering a replacement, leaving it empty for next time, or replace the stored card without adding it to their deck.
 
@@ -10,7 +10,7 @@ Additionally, the event has been made more consistent, so the player is more lik
 
 The event has also been upgraded to keep track of cards with miscellaneous values such as Ritual Dagger and Genetic Algorithm instead of resetting them.
 
-# Design Goals
+## Design Goals
 
 The normal event allows the player to store a card to be used in future runs. This concept, while cool, is ultimately not utilized to it's full potential. There are a few main issues causing this problem.
 
