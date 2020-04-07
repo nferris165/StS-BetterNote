@@ -1,6 +1,6 @@
 # A Better Note
 
-This mod is meant to redesign the Event "A Note for Yourself" into something more useful and fun for the player.
+This mod for Slay The Spire is meant to redesign the Event "A Note for Yourself" into something more useful and fun for the player.
 
 ## Effects
 
@@ -21,6 +21,7 @@ As a solution, "A Better Note" reimagines this event such that the player adds a
 The normal event also runs into an issue where if it's encountered early in a run, the player will have no good cards to store, and if it's encountered late in a run, the player has no bad cards to remove. In order to make this event feel more useful and fun, "A Better Note" increases the odds of encountering the event during Act 2, which fits an enjoyable middle ground for being early enough that the player is still making deck design decisions, but late enough that the player has a general idea of what their deck is going to built towards. In keeping with the spirit of the game, the event is still random, and the player still might not see it every run, but it will feel far more satisfying to encounter, and will not feel so rare that it is useless to use.
 
 ### Installation
+1. Navigate the the Slay the Spire Steam Workshop.
 1. Subscribe to **ModTheSpire** on the Steam Workshop.
 2. Subscribe to **BaseMod** on the Steam Workshop.
 3. Subscribe to **STSLib** on the Steam Workshop.
