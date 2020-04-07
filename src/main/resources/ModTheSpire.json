@@ -2,7 +2,7 @@
   "modid": "betterNote",
   "name": "Better Note",
   "author_list": ["Nichilas"],
-  "description": "Better Note to Yourself.",
+  "description": "A Better Note to Yourself.",
   "version": "${project.version}",
   "sts_version": "${SlayTheSpire.version}",
   "mts_version": "${ModTheSpire.version}",
