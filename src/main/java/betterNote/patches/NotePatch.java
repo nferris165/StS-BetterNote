@@ -22,11 +22,23 @@ public class NotePatch {
     )
 
     public static class NotePatchGenerate {
-        public static SpireReturn<AbstractEvent> Prefix (Random __rng){
+        public static SpireReturn<AbstractEvent> Prefix (Random __rng, ArrayList<String> ___specialOneTimeEventList, ArrayList<String> ___eventList, ArrayList<String> ___shrineList){
 
-        if (AbstractDungeon.actNum == 2) {
-            return SpireReturn.Return(AbstractDungeon.getShrine(__rng));
-        }
+            if(___specialOneTimeEventList.contains(NoteForYourself.ID)){
+                if (AbstractDungeon.actNum == 2 && EventDungeonEnumPatch.noteChance.get(CardCrawlGame.dungeon) > 0.0F) {
+                    //BetterNote.logger.info("shrine:" +  ___shrineList + "\n special: " + ___specialOneTimeEventList + "\nevent: " + ___eventList + "\n");
+                    if (___shrineList.isEmpty()) {
+                        if (!___eventList.isEmpty()) {
+                            return SpireReturn.Return(AbstractDungeon.getEvent(__rng));
+                        } else {
+                            BetterNote.logger.info("No events or shrines left");
+                            return SpireReturn.Return(null);
+                        }
+                    } else {
+                        return SpireReturn.Return(AbstractDungeon.getShrine(__rng));
+                    }
+                }
+            }
 
         return SpireReturn.Continue();
         }
@@ -42,6 +54,8 @@ public class NotePatch {
                 locator = Locator.class
         )
         public static SpireReturn<AbstractEvent> Insert(Random __rng, @ByRef String[] ___tmpKey, ArrayList<String> ___specialOneTimeEventList) {
+
+            //BetterNote.logger.info(tmp + "-------------- \n");
 
             if(___specialOneTimeEventList.contains(NoteForYourself.ID)){
                 if(AbstractDungeon.actNum == 2){
