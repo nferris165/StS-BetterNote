@@ -1,16 +1,20 @@
 package betterNote;
 
+import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.ReflectionHacks;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.audio.Sfx;
 import com.megacrit.cardcrawl.audio.SoundMaster;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 
 import basemod.BaseMod;
@@ -37,6 +41,8 @@ public class BetterNote implements
 
     //mod settings
     public static Properties defaultSettings = new Properties();
+    public static final String ascension_limit_settings = "ascensionLimit";
+    public static boolean ascLimit = false;
 
     private static final String MODNAME = "Better Note";
     private static final String AUTHOR = "Nichilas";
@@ -89,6 +95,16 @@ public class BetterNote implements
 
     public BetterNote() {
         BaseMod.subscribe(this);
+
+        logger.info("Adding mod settings");
+        defaultSettings.setProperty(ascension_limit_settings, "FALSE");
+        try {
+            SpireConfig config = new SpireConfig("betterNote", "betterNoteConfig", defaultSettings);
+            config.load();
+            ascLimit = config.getBool(ascension_limit_settings);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void initialize() {
@@ -163,6 +179,24 @@ public class BetterNote implements
         Texture badgeTexture = TextureLoader.getTexture(BADGE_IMAGE);
         ModPanel settingsPanel = new ModPanel();
 
+        ModLabeledToggleButton enableEventsButton = new ModLabeledToggleButton("Enables Better Note event for all ascension levels.",
+                350.0f, 750.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                ascLimit,
+                settingsPanel,
+                (label) -> {},
+                (button) -> {
+
+                    ascLimit = button.enabled;
+                    try {
+                        SpireConfig config = new SpireConfig("betterNote", "betterNoteConfig", defaultSettings);
+                        config.setBool(ascension_limit_settings, ascLimit);
+                        config.save();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+
+        settingsPanel.addUIElement(enableEventsButton);
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
         //events
