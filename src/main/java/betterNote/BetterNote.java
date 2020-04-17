@@ -48,48 +48,48 @@ public class BetterNote implements
     private static final String AUTHOR = "Nichilas";
     private static final String DESCRIPTION = "A mod to make the Note for Yourself event better";
 
-    private static final String BADGE_IMAGE = "Resources/images/Badge.png";
+    private static final String BADGE_IMAGE = "betterNoteResources/images/Badge.png";
 
-    private static final String AUDIO_PATH = "Resources/audio/";
+    private static final String AUDIO_PATH = "betterNoteResources/audio/";
 
     private static final String modID = "betterNote";
 
 
     //Image Directories
     public static String makeCardPath(String resourcePath) {
-        return "Resources/images/cards/" + resourcePath;
+        return modID + "Resources/images/cards/" + resourcePath;
     }
 
     public static String makeEventPath(String resourcePath) {
-        return "Resources/images/events/" + resourcePath;
+        return modID + "Resources/images/events/" + resourcePath;
     }
 
     public static String makeMonsterPath(String resourcePath) {
-        return "Resources/images/monsters/" + resourcePath;
+        return modID + "Resources/images/monsters/" + resourcePath;
     }
 
     public static String makeOrbPath(String resourcePath) {
-        return "Resources/images/orbs/" + resourcePath;
+        return modID + "Resources/images/orbs/" + resourcePath;
     }
 
     public static String makePowerPath(String resourcePath) {
-        return "Resources/images/powers/" + resourcePath;
+        return modID + "Resources/images/powers/" + resourcePath;
     }
 
     public static String makeRelicPath(String resourcePath) {
-        return "Resources/images/relics/" + resourcePath;
+        return modID + "Resources/images/relics/" + resourcePath;
     }
 
     public static String makeRelicOutlinePath(String resourcePath) {
-        return "Resources/images/relics/outline/" + resourcePath;
+        return modID + "Resources/images/relics/outline/" + resourcePath;
     }
 
     public static String makeUIPath(String resourcePath) {
-        return "Resources/images/ui/" + resourcePath;
+        return modID + "Resources/images/ui/" + resourcePath;
     }
 
     public static String makeVfxPath(String resourcePath) {
-        return "Resources/images/vfx/" + resourcePath;
+        return modID + "Resources/images/vfx/" + resourcePath;
     }
 
 
@@ -128,7 +128,7 @@ public class BetterNote implements
     @Override
     public void receiveEditKeywords() {
         Gson gson = new Gson();
-        String json = Gdx.files.internal("Resources/localization/eng/Keyword-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String json = Gdx.files.internal(modID + "Resources/localization/eng/Keyword-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));
         com.evacipated.cardcrawl.mod.stslib.Keyword[] keywords = gson.fromJson(json, com.evacipated.cardcrawl.mod.stslib.Keyword[].class);
 
         if (keywords != null) {
@@ -146,23 +146,23 @@ public class BetterNote implements
     @Override
     public void receiveEditStrings() {
         BaseMod.loadCustomStringsFile(CardStrings.class,
-                "Resources/localization/eng/Card-Strings.json");
+                modID + "Resources/localization/eng/Card-Strings.json");
         BaseMod.loadCustomStringsFile(CharacterStrings.class,
-                "Resources/localization/eng/Character-Strings.json");
+                modID + "Resources/localization/eng/Character-Strings.json");
         BaseMod.loadCustomStringsFile(EventStrings.class,
-                "Resources/localization/eng/Event-Strings.json");
+                modID + "Resources/localization/eng/Event-Strings.json");
         BaseMod.loadCustomStringsFile(MonsterStrings.class,
-                "Resources/localization/eng/Monster-Strings.json");
+                modID + "Resources/localization/eng/Monster-Strings.json");
         BaseMod.loadCustomStringsFile(OrbStrings.class,
-                "Resources/localization/eng/Orb-Strings.json");
+                modID + "Resources/localization/eng/Orb-Strings.json");
         BaseMod.loadCustomStringsFile(PotionStrings.class,
-                "Resources/localization/eng/Potion-Strings.json");
+                modID + "Resources/localization/eng/Potion-Strings.json");
         BaseMod.loadCustomStringsFile(PowerStrings.class,
-                "Resources/localization/eng/Power-Strings.json");
+                modID + "Resources/localization/eng/Power-Strings.json");
         BaseMod.loadCustomStringsFile(RelicStrings.class,
-                "Resources/localization/eng/Relic-Strings.json");
+                modID + "Resources/localization/eng/Relic-Strings.json");
         BaseMod.loadCustomStringsFile(UIStrings.class,
-                "Resources/localization/eng/UI-Strings.json");
+                modID + "Resources/localization/eng/UI-Strings.json");
     }
 
     private void loadAudio() {
