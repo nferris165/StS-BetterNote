@@ -121,7 +121,7 @@ public class BetterNoteEvent extends AbstractImageEvent {
         }
     }
 
-    private void initializeObtainCard() {
+    public void initializeObtainCard() {
         this.obtainCard = CardLibrary.getCard(CardCrawlGame.playerPref.getString("NOTE_CARD", "None"));
         if (this.obtainCard == null) {
             return;
