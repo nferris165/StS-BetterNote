@@ -26,6 +26,7 @@ public class customMetrics implements Runnable {
     private Gson gson = new Gson();
     private long lastPlaytimeEnd;
     private boolean foundEvent = false;
+    private boolean death;
     public static final SimpleDateFormat timestampFormatter = new SimpleDateFormat("yyyyMMddHHmmss");
 
     public static final String URL = "https://metricsanalysis.azurewebsites.net/metrics";
@@ -34,6 +35,10 @@ public class customMetrics implements Runnable {
     private void addData(Object key, Object value)
     {
         this.params.put(key, value);
+    }
+
+    public void setValues(boolean death) {
+        this.death = death;
     }
 
     private void sendPost()
@@ -69,7 +74,7 @@ public class customMetrics implements Runnable {
     private void gatherAllData()
     {
         //Boolean death = AbstractDungeon.deathScreen.isVictory;
-        Boolean death = AbstractDungeon.getCurrRoom() instanceof VictoryRoom;
+        boolean death = !(AbstractDungeon.getCurrRoom() instanceof VictoryRoom);
         addData("play_id", UUID.randomUUID().toString());
         addData("build_version", CardCrawlGame.TRUE_VERSION_NUM);
         addData("seed_played", Settings.seed.toString());
@@ -96,7 +101,7 @@ public class customMetrics implements Runnable {
 
         //addData("is_beta", Boolean.valueOf(Settings.isBeta));
         //addData("is_prod", Boolean.valueOf(Settings.isDemo));
-        addData("victory", Boolean.valueOf(!death));
+        addData("victory", !death);
         addData("floor_reached", Integer.valueOf(AbstractDungeon.floorNum));
         addData("score", Integer.valueOf(DeathScreen.calcScore(!death)));
         this.lastPlaytimeEnd = (System.currentTimeMillis() / 1000L);
