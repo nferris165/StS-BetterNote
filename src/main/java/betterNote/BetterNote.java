@@ -4,6 +4,7 @@ import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.ReflectionHacks;
 import basemod.interfaces.*;
+import betterNote.patches.customMetrics;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
@@ -35,6 +36,7 @@ public class BetterNote implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
+        PostDeathSubscriber,
         PostInitializeSubscriber {
 
     public static final Logger logger = LogManager.getLogger(BetterNote.class.getName());
@@ -210,5 +212,14 @@ public class BetterNote implements
 
         //audio
         loadAudio();
+    }
+
+    @Override
+    public void receivePostDeath() {
+        customMetrics metrics = new customMetrics();
+
+        Thread t = new Thread(metrics);
+        t.setName("Metrics");
+        t.start();
     }
 }

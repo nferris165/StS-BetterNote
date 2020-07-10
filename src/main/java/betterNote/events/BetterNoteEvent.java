@@ -29,6 +29,7 @@ public class BetterNoteEvent extends AbstractImageEvent {
     public AbstractCard saveCard = null;
     private boolean cardSelect = false;
     public boolean remCard = false;
+    private String choice;
     private BetterNoteEvent.CUR_SCREEN screen;
 
     public BetterNoteEvent() {
@@ -36,6 +37,7 @@ public class BetterNoteEvent extends AbstractImageEvent {
 
         this.screen = BetterNoteEvent.CUR_SCREEN.INTRO;
         this.imageEventText.setDialogOption(OPTIONS[0]);
+        this.choice = "";
         this.initializeObtainCard();
     }
 
@@ -73,6 +75,7 @@ public class BetterNoteEvent extends AbstractImageEvent {
                         }
                         this.saveCard = new IronWave();
                         this.remCard = true;
+                        this.choice = "Take";
                         break;
                     case 1:
                         for(AbstractRelic r: AbstractDungeon.player.relics){
@@ -89,15 +92,18 @@ public class BetterNoteEvent extends AbstractImageEvent {
                         AbstractDungeon.gridSelectScreen.open(CardGroup.getGroupWithoutBottledCards(
                                 AbstractDungeon.player.masterDeck.getPurgeableCards()), 1,
                                 DESCRIPTIONS[2], false, false, false, false);
+                        this.choice = "Take & Give";
                         break;
                     case 2:
                         this.cardSelect = true;
                         AbstractDungeon.gridSelectScreen.open(CardGroup.getGroupWithoutBottledCards(
                                 AbstractDungeon.player.masterDeck.getPurgeableCards()), 1,
                                 DESCRIPTIONS[2], false, false, false, false);
+                        this.choice = "Give";
                         break;
                     case 3:
                         //'Leave' Option
+                        logMetricIgnored(ID);
                         break;
                 }
 
@@ -116,6 +122,7 @@ public class BetterNoteEvent extends AbstractImageEvent {
         super.update();
         if (this.cardSelect && !AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
             AbstractCard storeCard = AbstractDungeon.gridSelectScreen.selectedCards.remove(0);
+            logMetricObtainCardAndLoseCard(ID, this.choice, this.obtainCard, storeCard);
             this.saveCard = storeCard.makeStatEquivalentCopy();
             this.cardSelect = false;
         }
