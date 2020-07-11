@@ -14,6 +14,9 @@ import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BetterNoteEvent extends AbstractImageEvent {
 
 
@@ -103,7 +106,10 @@ public class BetterNoteEvent extends AbstractImageEvent {
                         break;
                     case 3:
                         //'Leave' Option
-                        logMetricIgnored(ID);
+                        List<String> tempList = new ArrayList<>();
+                        tempList.add(this.obtainCard.cardID);
+                        logMetricRemoveCardsAtCost(ID, "Ignored", tempList, 0);
+
                         break;
                 }
 
