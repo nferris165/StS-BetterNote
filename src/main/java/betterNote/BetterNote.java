@@ -45,6 +45,8 @@ public class BetterNote implements
     public static Properties defaultSettings = new Properties();
     public static final String ascension_limit_settings = "ascensionLimit";
     public static boolean ascLimit = false;
+    public static final String dupe_limit_settings = "dupeLimit";
+    public static boolean dupeLimit = true;
 
     private static final String MODNAME = "Better Note";
     private static final String AUTHOR = "Nichilas";
@@ -100,10 +102,12 @@ public class BetterNote implements
 
         logger.info("Adding mod settings");
         defaultSettings.setProperty(ascension_limit_settings, "FALSE");
+        defaultSettings.setProperty(dupe_limit_settings, "TRUE");
         try {
             SpireConfig config = new SpireConfig("betterNote", "betterNoteConfig", defaultSettings);
             config.load();
             ascLimit = config.getBool(ascension_limit_settings);
+            dupeLimit = config.getBool(dupe_limit_settings);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -198,7 +202,25 @@ public class BetterNote implements
                     }
                 });
 
+        ModLabeledToggleButton enabledDupesButton = new ModLabeledToggleButton("Limits ability to 'Take & Give' the card just received.",
+                350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                dupeLimit,
+                settingsPanel,
+                (label) -> {},
+                (button) -> {
+
+                    dupeLimit = button.enabled;
+                    try {
+                        SpireConfig config = new SpireConfig("betterNote", "betterNoteConfig", defaultSettings);
+                        config.setBool(dupe_limit_settings, dupeLimit);
+                        config.save();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+
         settingsPanel.addUIElement(enableEventsButton);
+        settingsPanel.addUIElement(enabledDupesButton);
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
         //events

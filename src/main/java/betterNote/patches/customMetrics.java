@@ -138,6 +138,7 @@ public class customMetrics implements Runnable {
 
         //addData("event_choices", CardCrawlGame.metricData.event_choices);
         addData("asc_limit", BetterNote.ascLimit);
+        addData("dupe_limit", BetterNote.dupeLimit);
     }
 
     private HashMap getDeck(){

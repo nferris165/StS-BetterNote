@@ -81,20 +81,36 @@ public class BetterNoteEvent extends AbstractImageEvent {
                         this.choice = "Take";
                         break;
                     case 1:
-                        for(AbstractRelic r: AbstractDungeon.player.relics){
-                            r.onObtainCard(this.obtainCard);
+                        boolean limit = BetterNote.dupeLimit;
+                        if(!limit){
+                            for(AbstractRelic r: AbstractDungeon.player.relics){
+                                r.onObtainCard(this.obtainCard);
+                            }
+
+                            AbstractDungeon.player.masterDeck.addToTop(this.obtainCard);
+
+                            for(AbstractRelic r: AbstractDungeon.player.relics){
+                                r.onMasterDeckChange();
+                            }
                         }
 
-                        AbstractDungeon.player.masterDeck.addToTop(this.obtainCard);
-
-                        for(AbstractRelic r: AbstractDungeon.player.relics){
-                            r.onMasterDeckChange();
-                        }
 
                         this.cardSelect = true;
                         AbstractDungeon.gridSelectScreen.open(CardGroup.getGroupWithoutBottledCards(
                                 AbstractDungeon.player.masterDeck.getPurgeableCards()), 1,
                                 DESCRIPTIONS[2], false, false, false, false);
+
+                        if(limit){
+                            for(AbstractRelic r: AbstractDungeon.player.relics){
+                                r.onObtainCard(this.obtainCard);
+                            }
+
+                            AbstractDungeon.player.masterDeck.addToTop(this.obtainCard);
+
+                            for(AbstractRelic r: AbstractDungeon.player.relics){
+                                r.onMasterDeckChange();
+                            }
+                        }
                         this.choice = "Take & Give";
                         break;
                     case 2:
