@@ -144,8 +144,18 @@ public class BetterNoteEvent extends AbstractImageEvent {
         super.update();
         if (this.cardSelect && !AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
             AbstractCard storeCard = AbstractDungeon.gridSelectScreen.selectedCards.remove(0);
-            logMetricObtainCardAndLoseCard(ID, this.choice, this.obtainCard, storeCard);
             this.saveCard = storeCard.makeStatEquivalentCopy();
+            if(this.obtainCard != null){
+                logMetricObtainCardAndLoseCard(ID, this.choice, this.obtainCard, this.saveCard);
+            }
+            else{
+                List<String> tempList = new ArrayList<>();
+                tempList.add("None");
+                List<String> tempList2 = new ArrayList<>();
+                tempList2.add(this.saveCard.cardID);
+                logMetric(ID, this.choice, tempList, tempList2, null, null, null, null, null,
+                        0, 0, 0, 0, 0, 0);
+            }
             this.cardSelect = false;
         }
     }
