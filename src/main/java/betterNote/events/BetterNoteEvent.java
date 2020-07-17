@@ -79,6 +79,7 @@ public class BetterNoteEvent extends AbstractImageEvent {
                         this.saveCard = new IronWave();
                         this.remCard = true;
                         this.choice = "Take";
+                        logMetricObtainCard(ID, this.choice, this.obtainCard);
                         break;
                     case 1:
                         boolean limit = BetterNote.dupeLimit;
@@ -122,9 +123,7 @@ public class BetterNoteEvent extends AbstractImageEvent {
                         break;
                     case 3:
                         //'Leave' Option
-                        List<String> tempList = new ArrayList<>();
-                        tempList.add(this.obtainCard.cardID);
-                        logMetricRemoveCardsAtCost(ID, "Ignored", tempList, 0);
+                        logMetricObtainCard(ID, "Ignored", this.obtainCard);
 
                         break;
                 }
