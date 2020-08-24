@@ -81,8 +81,6 @@ public class customMetrics implements Runnable {
 
     private void gatherAllData()
     {
-        //Boolean death = AbstractDungeon.deathScreen.isVictory;
-        boolean death = !(AbstractDungeon.getCurrRoom() instanceof VictoryRoom);
         addData("play_id", UUID.randomUUID().toString());
         addData("build_version", CardCrawlGame.TRUE_VERSION_NUM);
         addData("seed_played", Settings.seed.toString());
