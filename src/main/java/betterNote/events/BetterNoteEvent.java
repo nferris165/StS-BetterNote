@@ -123,7 +123,16 @@ public class BetterNoteEvent extends AbstractImageEvent {
                         break;
                     case 3:
                         //'Leave' Option
-                        logMetricObtainCard(ID, "Ignored", this.obtainCard);
+                        if(this.obtainCard != null){
+                            logMetricObtainCard(ID, "Ignored", this.obtainCard);
+                        }
+                        else{
+                            List<String> tempList = new ArrayList<>();
+                            tempList.add("None");
+                            logMetric(ID, this.choice, tempList, null, null,
+                                    null, null, null, null,
+                                    0, 0, 0, 0, 0, 0);
+                        }
 
                         break;
                 }
@@ -161,6 +170,7 @@ public class BetterNoteEvent extends AbstractImageEvent {
 
     public void initializeObtainCard() {
         this.obtainCard = CardLibrary.getCard(CardCrawlGame.playerPref.getString("NOTE_CARD", "None"));
+
         if (this.obtainCard == null) {
             return;
         }
