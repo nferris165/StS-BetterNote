@@ -188,11 +188,12 @@ public class BetterNote implements
 
     @Override
     public void receivePostInitialize() {
+        UIStrings configStrings = CardCrawlGame.languagePack.getUIString("ConfigMenuText");
         Texture badgeTexture = TextureLoader.getTexture(BADGE_IMAGE);
         ModPanel settingsPanel = new ModPanel();
 
         // TODO : translate?
-        ModLabeledToggleButton enableEventsButton = new ModLabeledToggleButton("Enables Better Note event for all ascension levels.",
+        ModLabeledToggleButton enableEventsButton = new ModLabeledToggleButton(configStrings.TEXT[0],
                 350.0f, 750.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
                 ascLimit,
                 settingsPanel,
@@ -209,7 +210,7 @@ public class BetterNote implements
                     }
                 });
 
-        ModLabeledToggleButton enabledDupesButton = new ModLabeledToggleButton("Limits ability to 'Take & Give' the card just received.",
+        ModLabeledToggleButton enabledDupesButton = new ModLabeledToggleButton(configStrings.TEXT[1],
                 350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
                 dupeLimit,
                 settingsPanel,

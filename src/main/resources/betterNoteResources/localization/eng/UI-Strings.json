@@ -1,3 +1,8 @@
 {
-
+  "ConfigMenuText": {
+    "TEXT": [
+      "Enables Better Note event for all ascension levels.",
+      "Limits ability to 'Take & Give' the card just received."
+    ]
+  }
 }
