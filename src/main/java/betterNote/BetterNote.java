@@ -98,7 +98,6 @@ public class BetterNote implements
         BaseMod.subscribe(this);
 
         logger.info("Adding mod settings");
-        // TODO : translate?
         defaultSettings.setProperty(ascension_limit_settings, "FALSE");
         defaultSettings.setProperty(dupe_limit_settings, "TRUE");
         try {
@@ -145,8 +144,8 @@ public class BetterNote implements
 
     private static String getLanguageString() {
         switch (Settings.language) {
-            case ZHS:
-                return "zhs";
+//            case ZHS:
+//                return "zhs";
             default:
                 return "eng";
         }
@@ -192,7 +191,6 @@ public class BetterNote implements
         Texture badgeTexture = TextureLoader.getTexture(BADGE_IMAGE);
         ModPanel settingsPanel = new ModPanel();
 
-        // TODO : translate?
         ModLabeledToggleButton enableEventsButton = new ModLabeledToggleButton(configStrings.TEXT[0],
                 350.0f, 750.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
                 ascLimit,
