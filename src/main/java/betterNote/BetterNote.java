@@ -187,7 +187,7 @@ public class BetterNote implements
 
     @Override
     public void receivePostInitialize() {
-        UIStrings configStrings = CardCrawlGame.languagePack.getUIString("ConfigMenuText");
+        UIStrings configStrings = CardCrawlGame.languagePack.getUIString(makeID("ConfigMenuText"));
         Texture badgeTexture = TextureLoader.getTexture(BADGE_IMAGE);
         ModPanel settingsPanel = new ModPanel();
 
